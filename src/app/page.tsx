@@ -23,9 +23,6 @@ export default function Home() {
 
     function handleModeChange(mode: SparkMode) {
         setActiveMode(mode);
-        setCluster((currentCluster) =>
-            getRandomClusterExcluding(currentCluster.id)
-        );
     }
 
     const buttonLabel =

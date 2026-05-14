@@ -35,7 +35,11 @@ export function SparkCard({
                 </div>
 
                 {mode === "songStarter" ? (
-                    <SongStarterLead cluster={cluster} />
+                    <SongStarterLead
+                        cluster={cluster}
+                        onSpark={onSpark}
+                        actionLabel={actionLabel}
+                    />
                 ) : (
                     <CoreWordPanel
                         cluster={cluster}
@@ -150,7 +154,15 @@ function CoreWordPanel({
     );
 }
 
-function SongStarterLead({ cluster }: { cluster: RhymeCluster }) {
+function SongStarterLead({
+    cluster,
+    onSpark,
+    actionLabel,
+}: {
+    cluster: RhymeCluster;
+    onSpark?: () => void;
+    actionLabel: string;
+}) {
     return (
         <div className="rounded-[1.5rem] border border-white/10 bg-black/30 px-4 py-5">
             <p className="mb-3 text-[0.65rem] uppercase tracking-[0.35em] text-violet-200/70">
@@ -165,6 +177,16 @@ function SongStarterLead({ cluster }: { cluster: RhymeCluster }) {
                 Build a hook or verse around the emotional lane first, then use the
                 rhyme set to shape the phrasing.
             </p>
+
+            {onSpark ? (
+                <button
+                    type="button"
+                    onClick={onSpark}
+                    className="mt-4 w-full rounded-full bg-violet-300 px-4 py-3 text-sm font-bold text-black shadow-lg shadow-violet-950/40 transition hover:bg-violet-200 active:scale-[0.98] sm:hidden"
+                >
+                    {actionLabel}
+                </button>
+            ) : null}
         </div>
     );
 }
