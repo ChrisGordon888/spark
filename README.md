@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spark
 
-## Getting Started
+Spark is a lightweight creative momentum app for rappers, songwriters, freestylers, and creators.
 
-First, run the development server:
+The goal is simple: help artists break through creative friction quickly with random rhyme clusters, mood-based inspiration, and fast interaction.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Spark is built as a focused creative ignition tool — not a bloated productivity app, full lyric editor, or generic AI prompt generator.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Coming soon.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Core Idea
 
-## Learn More
+Open Spark when you feel stuck, cold, uninspired, or overthinking.
 
-To learn more about Next.js, take a look at the following resources:
+Tap once and receive a useful creative launchpad:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- a core word
+- rhyme options
+- near rhymes
+- a mood direction
+- fast visual feedback
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The product is designed to help creators stay in flow and start making something immediately.
 
-## Deploy on Vercel
+## Current MVP Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Random rhyme cluster generation
+- Core word display
+- Rhyme and near-rhyme chips
+- Mood tag for creative direction
+- Mobile-first dark interface
+- Fast tap-based interaction
+- Clean TypeScript data model
+- Local-first architecture foundation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- React
+- Vercel deployment target
+
+## Product Principles
+
+- Mobile-first
+- Instant interaction
+- Low friction
+- Visually memorable
+- Emotionally resonant
+- Simple but polished
+- Scalable architecture
+
+## Architecture Notes
+
+Spark separates creative data, generation logic, and UI structure.
+
+Current structure:
+
+```txt
+src/
+  app/
+    page.tsx
+  components/
+    spark/
+  data/
+    rhymeClusters.ts
+  lib/
+    sparkEngine.ts
+    types.ts
