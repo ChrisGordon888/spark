@@ -6,6 +6,13 @@ type ModeSelectorProps = {
   onModeChange: (mode: SparkMode) => void;
 };
 
+const modeShortLabels: Record<SparkMode, string> = {
+  rhyme: "Rhyme",
+  freestyle: "Flow",
+  challenge: "Challenge",
+  songStarter: "Starter",
+};
+
 export function ModeSelector({
   modes,
   activeMode,
@@ -14,28 +21,29 @@ export function ModeSelector({
   const activeModeDetails = modes.find((mode) => mode.id === activeMode);
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-3">
-      <label
-        htmlFor="spark-mode"
-        className="mb-2 block text-[0.65rem] font-medium uppercase tracking-[0.25em] text-zinc-500"
-      >
-        Mode
-      </label>
+    <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-2 shadow-lg shadow-violet-950/10 backdrop-blur">
+      <div className="grid grid-cols-4 gap-1">
+        {modes.map((mode) => {
+          const isActive = mode.id === activeMode;
 
-      <select
-        id="spark-mode"
-        value={activeMode}
-        onChange={(event) => onModeChange(event.target.value as SparkMode)}
-        className="w-full appearance-none rounded-2xl border border-white/10 bg-black px-4 py-3 text-sm font-semibold text-white outline-none transition focus:border-violet-300/60"
-      >
-        {modes.map((mode) => (
-          <option key={mode.id} value={mode.id} className="bg-black text-white">
-            {mode.label}
-          </option>
-        ))}
-      </select>
+          return (
+            <button
+              key={mode.id}
+              type="button"
+              onClick={() => onModeChange(mode.id)}
+              className={`rounded-2xl px-2 py-3 text-center text-xs font-semibold transition active:scale-[0.97] ${
+                isActive
+                  ? "bg-violet-300 text-black shadow-md shadow-violet-950/30"
+                  : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200"
+              }`}
+            >
+              {modeShortLabels[mode.id]}
+            </button>
+          );
+        })}
+      </div>
 
-      <p className="mt-2 text-xs leading-5 text-zinc-500">
+      <p className="px-2 pb-1 pt-2 text-xs leading-5 text-zinc-500">
         {activeModeDetails?.description}
       </p>
     </div>
