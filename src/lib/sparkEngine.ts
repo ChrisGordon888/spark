@@ -1,5 +1,28 @@
 import { rhymeClusters } from "@/data/rhymeClusters";
-import type { RhymeCluster, SparkTopic } from "@/lib/types";
+import type { RhymeCluster, SparkModeOption, SparkTopic } from "@/lib/types";
+
+export const sparkModes: SparkModeOption[] = [
+  {
+    id: "rhyme",
+    label: "Rhyme Spark",
+    description: "Generate a focused rhyme cluster.",
+  },
+  {
+    id: "freestyle",
+    label: "Freestyle Flow",
+    description: "Practice with timed word changes.",
+  },
+  {
+    id: "challenge",
+    label: "Challenge",
+    description: "Use a set of words in one take.",
+  },
+  {
+    id: "songStarter",
+    label: "Song Starter",
+    description: "Find a lane for a hook or verse.",
+  },
+];
 
 export function getRandomCluster(): RhymeCluster {
   const randomIndex = Math.floor(Math.random() * rhymeClusters.length);

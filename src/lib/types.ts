@@ -32,6 +32,12 @@ export type SparkTopic =
 
 export type SparkMode = "rhyme" | "freestyle" | "challenge" | "songStarter";
 
+export type SparkModeOption = {
+  id: SparkMode;
+  label: string;
+  description: string;
+};
+
 export type RhymeCluster = {
   id: string;
   coreWord: string;
