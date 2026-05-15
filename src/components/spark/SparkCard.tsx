@@ -59,10 +59,9 @@ export function SparkCard({
                 <div className="mt-5 space-y-4">
                     {mode === "songStarter" ? (
                         <>
-                            <AnglesBlock cluster={cluster} defaultOpen />
-                            <LaneBlock cluster={cluster} />
+                            <SongStarterWriteToward cluster={cluster} />
                             <WordChipGroup
-                                title="Rhyme Fuel"
+                                title="Word Fuel"
                                 words={[
                                     ...cluster.rhymes.slice(0, 3),
                                     ...cluster.nearRhymes.slice(0, 2),
@@ -161,33 +160,53 @@ function SongStarterLead({
     onSpark?: () => void;
     actionLabel: string;
 }) {
-    const primaryAngle = cluster.relatedTopics[0];
+    const primaryThread = cluster.relatedTopics[0];
 
     return (
         <div className="rounded-[1.5rem] border border-white/10 bg-black/30 px-4 py-5">
             <p className="mb-3 text-[0.65rem] uppercase tracking-[0.35em] text-violet-200/70">
-                Creative Signal
+                Song Starter
             </p>
 
             <h2 className="text-3xl font-black tracking-[-0.04em] text-white">
-                {capitalize(cluster.coreWord)} is the doorway.
+                {primaryThread
+                    ? capitalize(primaryThread)
+                    : `${capitalize(cluster.coreWord)} is the doorway.`}
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-zinc-400">
-                Follow the feeling before the structure. Let the first image,
-                phrase, or memory pull the idea forward.
+                Use the thread as the concept. Let the spark word open your
+                first line, hook, or verse.
             </p>
 
-            {primaryAngle ? (
-                <div className="mt-4 rounded-2xl border border-violet-300/10 bg-violet-300/[0.04] p-3">
+            <div className="mt-4 space-y-3">
+                <div className="rounded-2xl border border-violet-300/10 bg-violet-300/[0.04] p-3">
                     <p className="text-[0.65rem] uppercase tracking-[0.25em] text-zinc-500">
-                        First Thread
+                        Spark Word
                     </p>
-                    <p className="mt-2 text-sm leading-5 text-zinc-200">
-                        {primaryAngle}
+
+                    <p className="mt-2 text-xl font-black tracking-[-0.03em] text-white">
+                        {cluster.coreWord}
                     </p>
                 </div>
-            ) : null}
+
+                <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
+                    <p className="mb-2 text-[0.65rem] uppercase tracking-[0.25em] text-zinc-500">
+                        Lane
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                        {cluster.topics.slice(0, 3).map((topic) => (
+                            <span
+                                key={topic}
+                                className="rounded-full border border-violet-300/20 bg-violet-300/5 px-3 py-1.5 text-xs capitalize text-violet-100"
+                            >
+                                {topic}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </div>
 
             {onSpark ? (
                 <button
@@ -198,6 +217,30 @@ function SongStarterLead({
                     {actionLabel}
                 </button>
             ) : null}
+        </div>
+    );
+}
+
+function SongStarterWriteToward({ cluster }: { cluster: RhymeCluster }) {
+    const supportingThreads = cluster.relatedTopics.slice(1, 3);
+
+    if (supportingThreads.length === 0) {
+        return null;
+    }
+
+    return (
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <p className="mb-3 text-[0.65rem] font-medium uppercase tracking-[0.25em] text-zinc-500">
+                Write Toward
+            </p>
+
+            <div className="space-y-2">
+                {supportingThreads.map((thread) => (
+                    <p key={thread} className="text-sm leading-5 text-zinc-300">
+                        <span className="text-violet-300">↳</span> {thread}
+                    </p>
+                ))}
+            </div>
         </div>
     );
 }
@@ -242,7 +285,6 @@ function ChallengeRule() {
         </div>
     );
 }
-
 
 function CoreWordMini({ cluster }: { cluster: RhymeCluster }) {
     return (
@@ -398,7 +440,7 @@ function getCardCopy(mode: SparkMode) {
         case "freestyle":
             return {
                 signalLabel: "Flow Signal",
-                subtitle: "Press play and rotate cues by BPM.",
+                subtitle: "Start the pulse and rotate cues by bars.",
             };
         case "challenge":
             return {
@@ -407,8 +449,8 @@ function getCardCopy(mode: SparkMode) {
             };
         case "songStarter":
             return {
-                signalLabel: "Creative Signal",
-                subtitle: "Catch the feeling before it becomes a song.",
+                signalLabel: "Song Starter",
+                subtitle: "Start with the thread, then write toward the image.",
             };
         case "rhyme":
         default:
