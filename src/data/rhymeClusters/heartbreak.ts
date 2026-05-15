@@ -70,7 +70,7 @@ export const heartbreakClusters: RhymeCluster[] = [
     topics: ["heartbreak", "night", "reflection"],
   },
   {
-    id: "distance",
+    id: "heartbreak-distance",
     coreWord: "distance",
     rhymes: ["instance", "resistance", "existence", "persistence"],
     nearRhymes: ["listen", "missing", "vision", "system"],
@@ -87,7 +87,7 @@ export const heartbreakClusters: RhymeCluster[] = [
     topics: ["love", "heartbreak", "reflection"],
   },
   {
-    id: "promise",
+    id: "heartbreak-promise",
     coreWord: "promise",
     rhymes: ["honest", "on this", "beyond this", "wanted"],
     nearRhymes: ["haunted", "constant", "cautious", "flawless"],
@@ -104,7 +104,7 @@ export const heartbreakClusters: RhymeCluster[] = [
     topics: ["love", "heartbreak", "reflection"],
   },
   {
-    id: "silence",
+    id: "heartbreak-silence",
     coreWord: "silence",
     rhymes: ["violence", "guidance", "timeless", "mindless"],
     nearRhymes: ["balance", "challenge", "talent", "malice"],
@@ -189,7 +189,7 @@ export const heartbreakClusters: RhymeCluster[] = [
     topics: ["heartbreak", "night", "reflection"],
   },
   {
-    id: "afterglow",
+    id: "heartbreak-afterglow",
     coreWord: "afterglow",
     rhymes: ["backroad", "that show", "half known", "last hope"],
     nearRhymes: ["shadow", "follow", "hollow", "borrowed"],
@@ -529,7 +529,7 @@ export const heartbreakClusters: RhymeCluster[] = [
     topics: ["love", "heartbreak", "reflection"],
   },
   {
-    id: "bluehour",
+    id: "heartbreak-bluehour",
     coreWord: "blue hour",
     rhymes: ["true power", "new flower", "few hours", "moon shower"],
     nearRhymes: ["devour", "allowed", "crowd", "louder"],

@@ -223,7 +223,7 @@ export const ambitionClusters: RhymeCluster[] = [
     topics: ["focus", "ambition", "growth"],
   },
   {
-    id: "witness",
+    id: "ambition-witness",
     coreWord: "witness",
     rhymes: ["business", "fitness", "hit list", "big risk"],
     nearRhymes: ["distance", "listen", "system", "instant"],
@@ -257,7 +257,7 @@ export const ambitionClusters: RhymeCluster[] = [
     topics: ["growth", "ambition", "legacy"],
   },
   {
-    id: "proof",
+    id: "ambition-proof",
     coreWord: "proof",
     rhymes: ["truth", "youth", "booth", "roof"],
     nearRhymes: ["move", "lose", "choose", "news"],
@@ -342,7 +342,7 @@ export const ambitionClusters: RhymeCluster[] = [
     topics: ["ambition", "reflection", "legacy"],
   },
   {
-    id: "threshold",
+    id: "ambition-threshold",
     coreWord: "threshold",
     rhymes: ["best mode", "next road", "chest cold", "fresh code"],
     nearRhymes: ["let go", "echo", "tempo", "headstrong"],
@@ -478,7 +478,7 @@ export const ambitionClusters: RhymeCluster[] = [
     topics: ["ambition", "pressure", "focus"],
   },
   {
-    id: "northstar",
+    id: "ambition-northstar",
     coreWord: "north star",
     rhymes: ["more scars", "closed heart", "go far", "own part"],
     nearRhymes: ["so far", "no charge", "cold dark", "whole spark"],

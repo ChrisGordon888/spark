@@ -87,7 +87,7 @@ export const healingClusters: RhymeCluster[] = [
     topics: ["healing", "reflection", "focus"],
   },
   {
-    id: "closure",
+    id: "healing-closure",
     coreWord: "closure",
     rhymes: ["exposure", "composure", "older", "soldier"],
     nearRhymes: ["closer", "over", "shoulder", "colder"],
@@ -121,7 +121,7 @@ export const healingClusters: RhymeCluster[] = [
     topics: ["healing", "love", "reflection"],
   },
   {
-    id: "scar",
+    id: "healing-scar",
     coreWord: "scar",
     rhymes: ["far", "star", "guard", "heart"],
     nearRhymes: ["dark", "part", "start", "spark"],
@@ -393,7 +393,7 @@ export const healingClusters: RhymeCluster[] = [
     topics: ["healing", "growth", "reflection"],
   },
   {
-    id: "stillness",
+    id: "healing-stillness",
     coreWord: "stillness",
     rhymes: ["illness", "witness", "business", "hit list"],
     nearRhymes: ["distance", "listen", "system", "instant"],
@@ -427,7 +427,7 @@ export const healingClusters: RhymeCluster[] = [
     topics: ["healing", "focus", "confidence"],
   },
   {
-    id: "clarity",
+    id: "healing-clarity",
     coreWord: "clarity",
     rhymes: ["rarity", "charity", "parity", "scarcity"],
     nearRhymes: ["therapy", "carefully", "barely", "fair to me"],
@@ -444,7 +444,7 @@ export const healingClusters: RhymeCluster[] = [
     topics: ["healing", "reflection", "focus"],
   },
   {
-    id: "resilience",
+    id: "healing-resilience",
     coreWord: "resilience",
     rhymes: ["brilliance", "millions", "children", "feelings"],
     nearRhymes: ["healing", "ceiling", "dealing", "revealing"],

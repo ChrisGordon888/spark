@@ -172,7 +172,7 @@ export const reflectionClusters: RhymeCluster[] = [
     topics: ["reflection", "heartbreak", "healing"],
   },
   {
-    id: "silence",
+    id: "reflection-silence",
     coreWord: "silence",
     rhymes: ["violence", "guidance", "timeless", "mindless"],
     nearRhymes: ["balance", "challenge", "talent", "malice"],
@@ -189,7 +189,7 @@ export const reflectionClusters: RhymeCluster[] = [
     topics: ["reflection", "healing", "night"],
   },
   {
-    id: "stillness",
+    id: "reflection-stillness",
     coreWord: "stillness",
     rhymes: ["witness", "business", "fitness", "hit list"],
     nearRhymes: ["distance", "listen", "system", "instant"],
@@ -206,7 +206,7 @@ export const reflectionClusters: RhymeCluster[] = [
     topics: ["reflection", "healing", "focus"],
   },
   {
-    id: "witness",
+    id: "reflection-witness",
     coreWord: "witness",
     rhymes: ["business", "fitness", "hit list", "big risk"],
     nearRhymes: ["distance", "listen", "system", "instant"],
@@ -240,7 +240,7 @@ export const reflectionClusters: RhymeCluster[] = [
     topics: ["reflection", "healing", "heartbreak"],
   },
   {
-    id: "clarity",
+    id: "reflection-clarity",
     coreWord: "clarity",
     rhymes: ["rarity", "charity", "parity", "scarcity"],
     nearRhymes: ["therapy", "carefully", "barely", "fair to me"],
@@ -291,7 +291,7 @@ export const reflectionClusters: RhymeCluster[] = [
     topics: ["reflection", "healing", "growth"],
   },
   {
-    id: "frame",
+    id: "reflection-frame",
     coreWord: "frame",
     rhymes: ["name", "game", "aim", "claim"],
     nearRhymes: ["same", "change", "flame", "rain"],
@@ -376,7 +376,7 @@ export const reflectionClusters: RhymeCluster[] = [
     topics: ["reflection", "growth", "pressure"],
   },
   {
-    id: "threshold",
+    id: "reflection-threshold",
     coreWord: "threshold",
     rhymes: ["best mode", "next road", "chest cold", "fresh code"],
     nearRhymes: ["let go", "echo", "tempo", "headstrong"],
@@ -597,7 +597,7 @@ export const reflectionClusters: RhymeCluster[] = [
     topics: ["reflection", "healing", "confidence"],
   },
   {
-    id: "blindspot",
+    id: "reflection-blindspot",
     coreWord: "blind spot",
     rhymes: ["time lost", "mind locked", "fine line", "high cost"],
     nearRhymes: ["side talk", "why not", "night watch", "tight knot"],

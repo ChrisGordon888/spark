@@ -155,7 +155,7 @@ export const cosmicClusters: RhymeCluster[] = [
     topics: ["reflection", "legacy", "growth"],
   },
   {
-    id: "alignment",
+    id: "cosmic-alignment",
     coreWord: "alignment",
     rhymes: ["assignment", "refinement", "environment", "enlightenment"],
     nearRhymes: ["silent", "guidance", "timeless", "climbing"],
@@ -240,7 +240,7 @@ export const cosmicClusters: RhymeCluster[] = [
     topics: ["healing", "growth", "reflection"],
   },
   {
-    id: "moonphase",
+    id: "cosmic-moonphase",
     coreWord: "moon phase",
     rhymes: ["new stage", "blue flame", "true aim", "loose change"],
     nearRhymes: ["mood changed", "too late", "through pain", "new name"],
@@ -257,7 +257,7 @@ export const cosmicClusters: RhymeCluster[] = [
     topics: ["night", "reflection", "healing"],
   },
   {
-    id: "afterglow",
+    id: "cosmic-afterglow",
     coreWord: "afterglow",
     rhymes: ["backroad", "that show", "half known", "last hope"],
     nearRhymes: ["shadow", "follow", "hollow", "borrowed"],
@@ -342,7 +342,7 @@ export const cosmicClusters: RhymeCluster[] = [
     topics: ["legacy", "reflection", "ambition"],
   },
   {
-    id: "northstar",
+    id: "cosmic-northstar",
     coreWord: "north star",
     rhymes: ["more scars", "closed heart", "go far", "own part"],
     nearRhymes: ["so far", "no charge", "cold dark", "whole spark"],
