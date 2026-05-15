@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { TapTempo } from "@/components/flow/TapTempo";
 import { useFlowPulse } from "@/hooks/useFlowPulse";
 import {
     DEFAULT_BARS_PER_CUE,
@@ -33,14 +34,7 @@ export function FlowCueController({
 
     const secondsPerCue = getSecondsPerCue(bpm, barsPerCue);
 
-    const {
-        isPlaying,
-        elapsedMs,
-        play,
-        pause,
-        reset,
-        nextCue,
-    } = useFlowPulse({
+    const { isPlaying, elapsedMs, play, pause, reset, nextCue } = useFlowPulse({
         bpm,
         barsPerCue,
         onCueComplete: onNextCue,
@@ -70,14 +64,22 @@ export function FlowCueController({
         const parsedValue = Number(bpmInput);
 
         if (Number.isNaN(parsedValue)) {
-            setBpm(DEFAULT_BPM);
-            setBpmInput(String(DEFAULT_BPM));
+            applyBpm(DEFAULT_BPM);
             return;
         }
 
         const clampedBpm = Math.min(
             MAX_BPM,
             Math.max(MIN_BPM, Math.round(parsedValue))
+        );
+
+        applyBpm(clampedBpm);
+    }
+
+    function applyBpm(nextBpm: number) {
+        const clampedBpm = Math.min(
+            MAX_BPM,
+            Math.max(MIN_BPM, Math.round(nextBpm))
         );
 
         setBpm(clampedBpm);
@@ -124,11 +126,13 @@ export function FlowCueController({
                         Flow Settings
                     </span>
 
-                    <span className="text-xs text-violet-300">Adjust</span>
+                    <span className="text-xs text-violet-300">
+                        BPM · Bars · Pulse
+                    </span>
                 </summary>
 
                 <div className="mt-3 space-y-3">
-                    <div>
+                    <div className="rounded-2xl border border-white/10 bg-black/30 p-3">
                         <label
                             htmlFor="flow-bpm"
                             className="mb-2 block text-[0.65rem] font-medium uppercase tracking-[0.25em] text-zinc-500"
@@ -155,7 +159,9 @@ export function FlowCueController({
                         </p>
                     </div>
 
-                    <div>
+                    <TapTempo onApplyBpm={applyBpm} />
+
+                    <div className="rounded-2xl border border-white/10 bg-black/30 p-3">
                         <p className="mb-2 text-[0.65rem] font-medium uppercase tracking-[0.25em] text-zinc-500">
                             Cue Changes Every
                         </p>
@@ -169,10 +175,11 @@ export function FlowCueController({
                                         key={option}
                                         type="button"
                                         onClick={() => setBarsPerCue(option)}
-                                        className={`rounded-full px-3 py-2 text-xs font-bold transition active:scale-[0.98] ${isActive
-                                            ? "bg-violet-300 text-black"
-                                            : "border border-white/10 bg-black/30 text-zinc-300 hover:bg-white/[0.06]"
-                                            }`}
+                                        className={`rounded-full px-3 py-2 text-xs font-bold transition active:scale-[0.98] ${
+                                            isActive
+                                                ? "bg-violet-300 text-black"
+                                                : "border border-white/10 bg-black/30 text-zinc-300 hover:bg-white/[0.06]"
+                                        }`}
                                     >
                                         {option} Bars
                                     </button>
@@ -186,7 +193,7 @@ export function FlowCueController({
                         </p>
                     </div>
 
-                    <div>
+                    <div className="rounded-2xl border border-white/10 bg-black/30 p-3">
                         <p className="mb-2 text-[0.65rem] font-medium uppercase tracking-[0.25em] text-zinc-500">
                             Light Pulse
                         </p>
@@ -200,10 +207,11 @@ export function FlowCueController({
                                         key={option}
                                         type="button"
                                         onClick={() => setPulseMode(option)}
-                                        className={`rounded-full px-3 py-2 text-xs font-bold capitalize transition active:scale-[0.98] ${isActive
-                                            ? "bg-violet-300 text-black"
-                                            : "border border-white/10 bg-black/30 text-zinc-300 hover:bg-white/[0.06]"
-                                            }`}
+                                        className={`rounded-full px-3 py-2 text-xs font-bold capitalize transition active:scale-[0.98] ${
+                                            isActive
+                                                ? "bg-violet-300 text-black"
+                                                : "border border-white/10 bg-black/30 text-zinc-300 hover:bg-white/[0.06]"
+                                        }`}
                                     >
                                         {option}
                                     </button>
@@ -228,7 +236,7 @@ export function FlowCueController({
                     onClick={nextCue}
                     className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold text-zinc-200 transition hover:bg-white/[0.08] active:scale-[0.98]"
                 >
-                    Next
+                    Cue
                 </button>
 
                 <button
@@ -320,15 +328,15 @@ function BeatBarStatus({
             <div className="mt-3 flex gap-1">
                 {Array.from({ length: barsPerCue }).map((_, index) => {
                     const barNumber = index + 1;
-                    const isActive = isPlaying && barNumber === beatInfo.barInCue;
+                    const isActive =
+                        isPlaying && barNumber === beatInfo.barInCue;
 
                     return (
                         <div
                             key={barNumber}
-                            className={`h-1.5 flex-1 rounded-full transition ${isActive
-                                ? "bg-violet-300"
-                                : "bg-white/10"
-                                }`}
+                            className={`h-1.5 flex-1 rounded-full transition ${
+                                isActive ? "bg-violet-300" : "bg-white/10"
+                            }`}
                         />
                     );
                 })}
@@ -354,8 +362,8 @@ function PulseLight({
     const downbeatBoost = beatInfo.isCueDownbeat
         ? 1.1
         : beatInfo.isDownbeat
-            ? 0.55
-            : 0;
+        ? 0.55
+        : 0;
 
     const scale =
         isPlaying && !isOff
@@ -365,8 +373,8 @@ function PulseLight({
     const glowOpacity = isOff
         ? 0.12
         : isPlaying
-            ? 0.2 + pulseFalloff * (beatInfo.isCueDownbeat ? 0.75 : 0.45)
-            : 0.2;
+        ? 0.2 + pulseFalloff * (beatInfo.isCueDownbeat ? 0.75 : 0.45)
+        : 0.2;
 
     const coreScale =
         isPlaying && !isOff
@@ -375,12 +383,13 @@ function PulseLight({
 
     return (
         <div
-            className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-full border bg-white/[0.03] transition ${beatInfo.isCueDownbeat && isPlaying
-                ? "border-violet-200/60"
-                : beatInfo.isDownbeat && isPlaying
+            className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-full border bg-white/[0.03] transition ${
+                beatInfo.isCueDownbeat && isPlaying
+                    ? "border-violet-200/60"
+                    : beatInfo.isDownbeat && isPlaying
                     ? "border-violet-300/30"
                     : "border-white/10"
-                }`}
+            }`}
         >
             {!isOff ? (
                 <div
@@ -393,10 +402,11 @@ function PulseLight({
             ) : null}
 
             <div
-                className={`relative flex h-7 w-7 items-center justify-center rounded-full transition duration-75 ${isPlaying
-                    ? "bg-violet-200 text-black shadow-[0_0_24px_rgba(196,181,253,0.9)]"
-                    : "bg-zinc-600 text-zinc-900"
-                    }`}
+                className={`relative flex h-7 w-7 items-center justify-center rounded-full transition duration-75 ${
+                    isPlaying
+                        ? "bg-violet-200 text-black shadow-[0_0_24px_rgba(196,181,253,0.9)]"
+                        : "bg-zinc-600 text-zinc-900"
+                }`}
                 style={{
                     transform: `scale(${coreScale})`,
                 }}

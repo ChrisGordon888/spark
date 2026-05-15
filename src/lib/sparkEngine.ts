@@ -16,7 +16,7 @@ export const sparkModes: SparkModeOption[] = [
     {
         id: "freestyle",
         label: "Freestyle Flow",
-        description: "Practice with timed word changes.",
+        description: "Match the beat and rotate cue words by bars.",
     },
     {
         id: "challenge",
@@ -84,25 +84,25 @@ export function getFreshRandomCluster({
     const freshTopicClusters =
         preferredTopics.length > 0
             ? freshClusters.filter((cluster) =>
-                  cluster.topics.some((topic) => preferredTopics.includes(topic))
-              )
+                cluster.topics.some((topic) => preferredTopics.includes(topic))
+            )
             : [];
 
     const topicClusters =
         preferredTopics.length > 0
             ? rhymeClusters.filter((cluster) =>
-                  cluster.topics.some((topic) => preferredTopics.includes(topic))
-              )
+                cluster.topics.some((topic) => preferredTopics.includes(topic))
+            )
             : [];
 
     const clusterPool =
         freshTopicClusters.length > 0
             ? freshTopicClusters
             : freshClusters.length > 0
-            ? freshClusters
-            : topicClusters.length > 0
-            ? topicClusters
-            : rhymeClusters;
+                ? freshClusters
+                : topicClusters.length > 0
+                    ? topicClusters
+                    : rhymeClusters;
 
     return getRandomItem(clusterPool);
 }

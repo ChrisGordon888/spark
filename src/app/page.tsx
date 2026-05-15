@@ -14,7 +14,7 @@ import type { RhymeCluster, SparkMode } from "@/lib/types";
 const RECENT_HISTORY_LIMIT = 18;
 
 export default function Home() {
-    const [activeMode, setActiveMode] = useState<SparkMode>("rhyme");
+    const [activeMode, setActiveMode] = useState<SparkMode>("freestyle");
     const [recentClusterIds, setRecentClusterIds] = useState<string[]>([]);
     const [recentCoreWords, setRecentCoreWords] = useState<string[]>([]);
     const [cluster, setCluster] = useState<RhymeCluster>(() =>
@@ -90,12 +90,11 @@ export default function Home() {
 
                     <div className="space-y-3">
                         <h1 className="max-w-sm text-3xl font-semibold leading-tight tracking-tight text-white">
-                            Ignite your next line.
+                            Find the pocket. Spark the next line.
                         </h1>
 
                         <p className="max-w-sm text-sm leading-6 text-zinc-400">
-                            Choose a mode, enter flow, and generate a fresh
-                            creative signal built for the way you are writing.
+                            Tap tempo, follow the pulse, and rotate fresh cue words by bars while you freestyle, write, or warm up.
                         </p>
                     </div>
                 </header>
