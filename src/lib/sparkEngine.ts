@@ -1,6 +1,12 @@
 import { rhymeClusters } from "@/data/rhymeClusters";
 import type { RhymeCluster, SparkModeOption, SparkTopic } from "@/lib/types";
 
+type FreshClusterOptions = {
+    recentClusterIds?: string[];
+    recentCoreWords?: string[];
+    preferredTopics?: SparkTopic[];
+};
+
 export const sparkModes: SparkModeOption[] = [
     {
         id: "rhyme",
@@ -25,8 +31,7 @@ export const sparkModes: SparkModeOption[] = [
 ];
 
 export function getRandomCluster(): RhymeCluster {
-    const randomIndex = Math.floor(Math.random() * rhymeClusters.length);
-    return rhymeClusters[randomIndex];
+    return getRandomItem(rhymeClusters);
 }
 
 export function getClustersByTopic(topic: SparkTopic): RhymeCluster[] {
@@ -40,8 +45,7 @@ export function getRandomClusterByTopic(topic: SparkTopic): RhymeCluster {
         return getRandomCluster();
     }
 
-    const randomIndex = Math.floor(Math.random() * matchingClusters.length);
-    return matchingClusters[randomIndex];
+    return getRandomItem(matchingClusters);
 }
 
 export function getRandomClusterExcluding(
@@ -55,19 +59,59 @@ export function getRandomClusterExcluding(
         return getRandomCluster();
     }
 
-    const randomIndex = Math.floor(Math.random() * availableClusters.length);
-    return availableClusters[randomIndex];
+    return getRandomItem(availableClusters);
 }
 
-export function getFreshRandomCluster(recentClusterIds: string[] = []): RhymeCluster {
+export function getFreshRandomCluster({
+    recentClusterIds = [],
+    recentCoreWords = [],
+    preferredTopics = [],
+}: FreshClusterOptions = {}): RhymeCluster {
     const recentIdSet = new Set(recentClusterIds);
-
-    const freshClusters = rhymeClusters.filter(
-        (cluster) => !recentIdSet.has(cluster.id)
+    const recentCoreWordSet = new Set(
+        recentCoreWords.map((word) => normalizeWord(word))
     );
 
-    const clusterPool = freshClusters.length > 0 ? freshClusters : rhymeClusters;
+    const freshClusters = rhymeClusters.filter((cluster) => {
+        const isRecentId = recentIdSet.has(cluster.id);
+        const isRecentCoreWord = recentCoreWordSet.has(
+            normalizeWord(cluster.coreWord)
+        );
 
-    const randomIndex = Math.floor(Math.random() * clusterPool.length);
-    return clusterPool[randomIndex];
+        return !isRecentId && !isRecentCoreWord;
+    });
+
+    const freshTopicClusters =
+        preferredTopics.length > 0
+            ? freshClusters.filter((cluster) =>
+                  cluster.topics.some((topic) => preferredTopics.includes(topic))
+              )
+            : [];
+
+    const topicClusters =
+        preferredTopics.length > 0
+            ? rhymeClusters.filter((cluster) =>
+                  cluster.topics.some((topic) => preferredTopics.includes(topic))
+              )
+            : [];
+
+    const clusterPool =
+        freshTopicClusters.length > 0
+            ? freshTopicClusters
+            : freshClusters.length > 0
+            ? freshClusters
+            : topicClusters.length > 0
+            ? topicClusters
+            : rhymeClusters;
+
+    return getRandomItem(clusterPool);
+}
+
+function getRandomItem<T>(items: T[]): T {
+    const randomIndex = Math.floor(Math.random() * items.length);
+    return items[randomIndex];
+}
+
+function normalizeWord(word: string): string {
+    return word.trim().toLowerCase();
 }

@@ -11,17 +11,51 @@ import {
 } from "@/lib/sparkEngine";
 import type { RhymeCluster, SparkMode } from "@/lib/types";
 
+const RECENT_HISTORY_LIMIT = 18;
+
 export default function Home() {
     const [activeMode, setActiveMode] = useState<SparkMode>("rhyme");
     const [recentClusterIds, setRecentClusterIds] = useState<string[]>([]);
-    const [cluster, setCluster] = useState<RhymeCluster>(() => getRandomCluster());
+    const [recentCoreWords, setRecentCoreWords] = useState<string[]>([]);
+    const [cluster, setCluster] = useState<RhymeCluster>(() =>
+        getRandomCluster()
+    );
 
     function handleSpark() {
         setCluster((currentCluster) => {
-            const updatedRecentIds = [currentCluster.id, ...recentClusterIds].slice(0, 12);
-            const nextCluster = getFreshRandomCluster(updatedRecentIds);
+            const updatedRecentIds = [
+                currentCluster.id,
+                ...recentClusterIds,
+            ].slice(0, RECENT_HISTORY_LIMIT);
 
-            setRecentClusterIds([nextCluster.id, ...updatedRecentIds].slice(0, 12));
+            const updatedRecentCoreWords = [
+                currentCluster.coreWord,
+                ...recentCoreWords,
+            ].slice(0, RECENT_HISTORY_LIMIT);
+
+            const shouldPreferCurrentLane = activeMode === "freestyle";
+
+            const nextCluster = getFreshRandomCluster({
+                recentClusterIds: updatedRecentIds,
+                recentCoreWords: updatedRecentCoreWords,
+                preferredTopics: shouldPreferCurrentLane
+                    ? currentCluster.topics
+                    : [],
+            });
+
+            setRecentClusterIds(
+                [nextCluster.id, ...updatedRecentIds].slice(
+                    0,
+                    RECENT_HISTORY_LIMIT
+                )
+            );
+
+            setRecentCoreWords(
+                [nextCluster.coreWord, ...updatedRecentCoreWords].slice(
+                    0,
+                    RECENT_HISTORY_LIMIT
+                )
+            );
 
             return nextCluster;
         });
@@ -32,6 +66,10 @@ export default function Home() {
     }
 
     const buttonLabel = "Spark";
+    const enterLabel =
+        activeMode === "freestyle" ? "Enter Flow" : "Open Signal";
+    const enterHref =
+        activeMode === "freestyle" ? "#flow-cue-pulse" : "#spark-console";
 
     return (
         <main className="relative min-h-screen overflow-x-hidden bg-black px-4 py-4 text-zinc-100">
@@ -56,8 +94,8 @@ export default function Home() {
                         </h1>
 
                         <p className="max-w-sm text-sm leading-6 text-zinc-400">
-                            Choose a mode, enter flow, and generate a creative signal built
-                            for the way you are writing.
+                            Choose a mode, enter flow, and generate a fresh
+                            creative signal built for the way you are writing.
                         </p>
                     </div>
                 </header>
@@ -69,14 +107,17 @@ export default function Home() {
                 />
 
                 <a
-                    href={activeMode === "freestyle" ? "#flow-cue-pulse" : "#spark-console"}
+                    href={enterHref}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-zinc-300 transition hover:border-violet-300/30 hover:bg-violet-300/10 hover:text-violet-100"
                 >
-                    Enter Flow
+                    {enterLabel}
                     <span className="text-violet-300">↓</span>
                 </a>
 
-                <section id="spark-console" className="scroll-mt-4 space-y-4 pt-2">
+                <section
+                    id="spark-console"
+                    className="scroll-mt-4 space-y-4 pt-2"
+                >
                     <SparkCard
                         cluster={cluster}
                         mode={activeMode}
@@ -85,7 +126,9 @@ export default function Home() {
                     />
 
                     <div className="sticky bottom-0 -mx-4 hidden bg-gradient-to-t from-black via-black/95 to-transparent px-4 pb-4 pt-3 sm:block">
-                        <SparkButton onClick={handleSpark}>{buttonLabel}</SparkButton>
+                        <SparkButton onClick={handleSpark}>
+                            {buttonLabel}
+                        </SparkButton>
                     </div>
                 </section>
             </section>
