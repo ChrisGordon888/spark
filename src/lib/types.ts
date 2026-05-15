@@ -18,17 +18,20 @@ export type SparkDifficulty = "easy" | "medium" | "advanced";
 
 export type SparkTopic =
   | "ambition"
-  | "pressure"
-  | "love"
-  | "heartbreak"
-  | "growth"
   | "confidence"
-  | "survival"
-  | "reflection"
-  | "night"
-  | "legacy"
+  | "conflict"
+  | "cosmic"
   | "focus"
-  | "healing";
+  | "growth"
+  | "healing"
+  | "heartbreak"
+  | "legacy"
+  | "love"
+  | "motion"
+  | "night"
+  | "pressure"
+  | "reflection"
+  | "survival";
 
 export type SparkMode = "rhyme" | "freestyle" | "challenge" | "songStarter";
 
