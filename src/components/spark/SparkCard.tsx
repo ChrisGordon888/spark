@@ -1,3 +1,4 @@
+import { FlowCueController } from "@/components/flow/FlowCueController";
 import type { RhymeCluster, SparkMode } from "@/lib/types";
 
 type SparkCardProps = {
@@ -25,7 +26,9 @@ export function SparkCard({
                         <p className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-zinc-500">
                             {cardCopy.signalLabel}
                         </p>
-                        <p className="mt-1 text-xs text-zinc-500">{cardCopy.subtitle}</p>
+                        <p className="mt-1 text-xs text-zinc-500">
+                            {cardCopy.subtitle}
+                        </p>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -52,31 +55,30 @@ export function SparkCard({
                     {mode === "songStarter" ? (
                         <>
                             <AnglesBlock cluster={cluster} defaultOpen />
+                            <LaneBlock cluster={cluster} />
                             <WordChipGroup
-                                title="Rhymes"
-                                words={cluster.rhymes}
+                                title="Rhyme Fuel"
+                                words={[
+                                    ...cluster.rhymes.slice(0, 3),
+                                    ...cluster.nearRhymes.slice(0, 2),
+                                ]}
                                 variant="primary"
                             />
-                            <WordChipGroup
-                                title="Near / Slant"
-                                words={[
-                                    ...cluster.nearRhymes.slice(0, 3),
-                                    ...cluster.slantWords.slice(0, 3),
-                                ]}
-                                variant="secondary"
-                            />
-                            <LaneBlock cluster={cluster} />
                         </>
                     ) : mode === "challenge" ? (
                         <>
                             <ChallengeWords cluster={cluster} />
+                            <ChallengeRule />
                             <CoreWordMini cluster={cluster} />
                             <LaneBlock cluster={cluster} />
                             <AnglesBlock cluster={cluster} />
                         </>
                     ) : mode === "freestyle" ? (
                         <>
-                            <FlowPreview cluster={cluster} />
+                            <FlowCueController
+                                coreWord={cluster.coreWord}
+                                onNextCue={onSpark}
+                            />
                             <WordChipGroup
                                 title="Rhymes"
                                 words={cluster.rhymes}
@@ -163,20 +165,33 @@ function SongStarterLead({
     onSpark?: () => void;
     actionLabel: string;
 }) {
+    const primaryAngle = cluster.relatedTopics[0];
+
     return (
         <div className="rounded-[1.5rem] border border-white/10 bg-black/30 px-4 py-5">
             <p className="mb-3 text-[0.65rem] uppercase tracking-[0.35em] text-violet-200/70">
-                Song Lane
+                Creative Signal
             </p>
 
             <h2 className="text-3xl font-black tracking-[-0.04em] text-white">
-                Start with {cluster.coreWord}.
+                {capitalize(cluster.coreWord)} is the doorway.
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-zinc-400">
-                Build a hook or verse around the emotional lane first, then use the
-                rhyme set to shape the phrasing.
+                Follow the feeling before the structure. Let the first image,
+                phrase, or memory pull the idea forward.
             </p>
+
+            {primaryAngle ? (
+                <div className="mt-4 rounded-2xl border border-violet-300/10 bg-violet-300/[0.04] p-3">
+                    <p className="text-[0.65rem] uppercase tracking-[0.25em] text-zinc-500">
+                        First Thread
+                    </p>
+                    <p className="mt-2 text-sm leading-5 text-zinc-200">
+                        {primaryAngle}
+                    </p>
+                </div>
+            ) : null}
 
             {onSpark ? (
                 <button
@@ -218,29 +233,20 @@ function ChallengeWords({ cluster }: { cluster: RhymeCluster }) {
     );
 }
 
-function FlowPreview({ cluster }: { cluster: RhymeCluster }) {
+function ChallengeRule() {
     return (
-        <div className="rounded-[1.5rem] border border-white/10 bg-black/30 p-4">
-            <div className="flex items-center justify-between gap-4">
-                <div>
-                    <p className="text-[0.65rem] uppercase tracking-[0.35em] text-violet-200/70">
-                        Flow Cue
-                    </p>
-                    <h2 className="mt-2 text-4xl font-black tracking-[-0.06em] text-white">
-                        {cluster.coreWord}
-                    </h2>
-                </div>
-
-                <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-2 text-right">
-                    <p className="text-[0.65rem] uppercase tracking-[0.2em] text-zinc-500">
-                        Soon
-                    </p>
-                    <p className="mt-1 text-xs text-zinc-400">BPM + bars</p>
-                </div>
-            </div>
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <p className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-zinc-500">
+                Rule
+            </p>
+            <p className="mt-2 text-sm leading-5 text-zinc-300">
+                Use all five words in one take. Keep moving even if the line is
+                imperfect.
+            </p>
         </div>
     );
 }
+
 
 function CoreWordMini({ cluster }: { cluster: RhymeCluster }) {
     return (
@@ -357,12 +363,16 @@ function WordChipGroup({ title, words, variant }: WordChipGroupProps) {
     );
 }
 
+function capitalize(value: string): string {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
 function getCardCopy(mode: SparkMode) {
     switch (mode) {
         case "freestyle":
             return {
-                signalLabel: "Freestyle Signal",
-                subtitle: "Stay in pocket and rotate cues.",
+                signalLabel: "Flow Signal",
+                subtitle: "Press play and rotate cues by BPM.",
             };
         case "challenge":
             return {
@@ -371,8 +381,8 @@ function getCardCopy(mode: SparkMode) {
             };
         case "songStarter":
             return {
-                signalLabel: "Starter Signal",
-                subtitle: "Find the emotional lane first.",
+                signalLabel: "Creative Signal",
+                subtitle: "Catch the feeling before it becomes a song.",
             };
         case "rhyme":
         default:
