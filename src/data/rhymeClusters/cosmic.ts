@@ -1,0 +1,55 @@
+import type { RhymeCluster } from "@/lib/types";
+
+export const cosmicClusters: RhymeCluster[] = [
+  {
+    id: "orbit",
+    coreWord: "orbit",
+    rhymes: ["forfeit", "portrait", "absorb it", "toward it"],
+    nearRhymes: ["foreign", "storming", "warning", "morning"],
+    slantWords: ["portal", "cosmic", "motion", "frequency"],
+    relatedTopics: [
+      "what keeps returning to your life",
+      "being pulled by unseen patterns",
+      "circling a dream before landing it",
+      "gravity between people and purpose",
+    ],
+    mood: "reflective",
+    energy: "smooth",
+    difficulty: "advanced",
+    topics: ["reflection", "growth", "focus"],
+  },
+  {
+    id: "gravity",
+    coreWord: "gravity",
+    rhymes: ["sanity", "vanity", "fantasy", "strategy"],
+    nearRhymes: ["galaxy", "casually", "tragedy", "majesty"],
+    slantWords: ["pulling me", "falling free", "calamity", "energy"],
+    relatedTopics: [
+      "what pulls you back when you try to leave",
+      "love as a force",
+      "ambition with weight behind it",
+      "the cost of staying grounded",
+    ],
+    mood: "dark",
+    energy: "steady",
+    difficulty: "advanced",
+    topics: ["reflection", "love", "pressure"],
+  },
+  {
+    id: "frequency",
+    coreWord: "frequency",
+    rhymes: ["recently", "decently", "peacefully", "secretly"],
+    nearRhymes: ["energy", "memory", "enemy", "chemistry"],
+    slantWords: ["symmetry", "identity", "telepathy", "remedy"],
+    relatedTopics: [
+      "matching energy before words",
+      "creative resonance",
+      "feeling the room shift",
+      "hearing what is not said directly",
+    ],
+    mood: "focused",
+    energy: "smooth",
+    difficulty: "advanced",
+    topics: ["focus", "reflection", "healing"],
+  },
+];

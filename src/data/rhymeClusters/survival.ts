@@ -1,0 +1,55 @@
+import type { RhymeCluster } from "@/lib/types";
+
+export const survivalClusters: RhymeCluster[] = [
+  {
+    id: "damage",
+    coreWord: "damage",
+    rhymes: ["manage", "advantage", "planet", "bandage"],
+    nearRhymes: ["panic", "vanish", "static", "savage"],
+    slantWords: ["stand it", "crafted", "fractured", "habit"],
+    relatedTopics: [
+      "turning pain into discipline",
+      "surviving what was not fair",
+      "learning from what broke you",
+      "carrying scars without becoming them",
+    ],
+    mood: "dark",
+    energy: "urgent",
+    difficulty: "medium",
+    topics: ["survival", "healing", "growth"],
+  },
+  {
+    id: "guard",
+    coreWord: "guard",
+    rhymes: ["hard", "scarred", "yard", "card"],
+    nearRhymes: ["heart", "stars", "far", "charge"],
+    slantWords: ["shards", "apart", "restart", "armor"],
+    relatedTopics: [
+      "protecting your energy",
+      "not letting everyone close",
+      "learning trust slowly",
+      "defense becoming identity",
+    ],
+    mood: "dark",
+    energy: "steady",
+    difficulty: "easy",
+    topics: ["survival", "heartbreak", "reflection"],
+  },
+  {
+    id: "hunger",
+    coreWord: "hunger",
+    rhymes: ["thunder", "wonder", "under", "younger"],
+    nearRhymes: ["runner", "summer", "number", "come up"],
+    slantWords: ["stomach", "struggle", "hustle", "pressure"],
+    relatedTopics: [
+      "wanting more because you remember less",
+      "ambition born from lack",
+      "staying driven when comfort appears",
+      "the difference between hunger and desperation",
+    ],
+    mood: "aggressive",
+    energy: "urgent",
+    difficulty: "medium",
+    topics: ["survival", "ambition", "pressure"],
+  },
+];

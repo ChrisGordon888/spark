@@ -1,0 +1,55 @@
+import type { RhymeCluster } from "@/lib/types";
+
+export const conflictClusters: RhymeCluster[] = [
+  {
+    id: "static",
+    coreWord: "static",
+    rhymes: ["tragic", "magic", "traffic", "classic"],
+    nearRhymes: ["panic", "damage", "habit", "savage"],
+    slantWords: ["automatic", "dramatic", "erratic", "magnetic"],
+    relatedTopics: [
+      "noise between what was said and meant",
+      "communication breaking down",
+      "being pulled into chaos",
+      "trying to hear truth through interference",
+    ],
+    mood: "dark",
+    energy: "urgent",
+    difficulty: "medium",
+    topics: ["pressure", "reflection", "survival"],
+  },
+  {
+    id: "betrayal",
+    coreWord: "betrayal",
+    rhymes: ["fatal", "stable", "label", "table"],
+    nearRhymes: ["angel", "painful", "faithful", "grateful"],
+    slantWords: ["unable", "cable", "fable", "halo"],
+    relatedTopics: [
+      "trust breaking quietly",
+      "realizing loyalty was one-sided",
+      "the lesson after disappointment",
+      "protecting yourself after being open",
+    ],
+    mood: "dark",
+    energy: "steady",
+    difficulty: "medium",
+    topics: ["heartbreak", "survival", "reflection"],
+  },
+  {
+    id: "venom",
+    coreWord: "venom",
+    rhymes: ["denim", "send him", "end him", "let him"],
+    nearRhymes: ["weapon", "lesson", "session", "pressure"],
+    slantWords: ["attention", "aggression", "possession", "obsession"],
+    relatedTopics: [
+      "words that poison the room",
+      "anger becoming identity",
+      "knowing when not to react",
+      "turning bitterness into clarity",
+    ],
+    mood: "aggressive",
+    energy: "urgent",
+    difficulty: "advanced",
+    topics: ["survival", "pressure", "healing"],
+  },
+];

@@ -1,0 +1,55 @@
+import type { RhymeCluster } from "@/lib/types";
+
+export const nightClusters: RhymeCluster[] = [
+  {
+    id: "midnight",
+    coreWord: "midnight",
+    rhymes: ["in sight", "dim light", "skin tight", "hindsight"],
+    nearRhymes: ["inside", "city lights", "thin ice", "still life"],
+    slantWords: ["moonrise", "blue eyes", "high tide", "night drive"],
+    relatedTopics: [
+      "late-night reflection",
+      "driving with thoughts open",
+      "memories coming alive after dark",
+      "feeling awake when the world is quiet",
+    ],
+    mood: "dark",
+    energy: "smooth",
+    difficulty: "medium",
+    topics: ["night", "reflection", "heartbreak"],
+  },
+  {
+    id: "shadow",
+    coreWord: "shadow",
+    rhymes: ["battle", "rattle", "shallow", "halo"],
+    nearRhymes: ["follow", "hollow", "borrowed", "narrow"],
+    slantWords: ["afterglow", "backroad", "black rose", "low"],
+    relatedTopics: [
+      "the parts of yourself you hide",
+      "moving through doubt quietly",
+      "being followed by old memories",
+      "finding shape inside darkness",
+    ],
+    mood: "dark",
+    energy: "low",
+    difficulty: "medium",
+    topics: ["night", "reflection", "survival"],
+  },
+  {
+    id: "city",
+    coreWord: "city",
+    rhymes: ["pretty", "with me", "quickly", "pity"],
+    nearRhymes: ["busy", "dizzy", "empty", "risky"],
+    slantWords: ["city lights", "midnight", "inside", "skyline"],
+    relatedTopics: [
+      "moving through crowds while feeling alone",
+      "late-night ambition",
+      "trying to be seen in a loud world",
+      "beauty and pressure in the same place",
+    ],
+    mood: "focused",
+    energy: "steady",
+    difficulty: "easy",
+    topics: ["night", "ambition", "reflection"],
+  },
+];

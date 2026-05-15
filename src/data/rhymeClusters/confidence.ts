@@ -1,0 +1,55 @@
+import type { RhymeCluster } from "@/lib/types";
+
+export const confidenceClusters: RhymeCluster[] = [
+  {
+    id: "power",
+    coreWord: "power",
+    rhymes: ["hour", "tower", "flower", "shower"],
+    nearRhymes: ["louder", "prouder", "outward", "coward"],
+    slantWords: ["devour", "allowed", "crowd", "crown"],
+    relatedTopics: [
+      "standing in your voice",
+      "refusing to shrink",
+      "earning presence instead of forcing it",
+      "knowing what you carry",
+    ],
+    mood: "triumphant",
+    energy: "explosive",
+    difficulty: "easy",
+    topics: ["confidence", "ambition", "legacy"],
+  },
+  {
+    id: "crown",
+    coreWord: "crown",
+    rhymes: ["down", "town", "sound", "found"],
+    nearRhymes: ["around", "ground", "loud", "proud"],
+    slantWords: ["count", "doubt", "cloud", "vow"],
+    relatedTopics: [
+      "claiming your worth without asking permission",
+      "being tested before being recognized",
+      "pressure that comes with leadership",
+      "walking like you belong",
+    ],
+    mood: "triumphant",
+    energy: "steady",
+    difficulty: "easy",
+    topics: ["confidence", "legacy", "ambition"],
+  },
+  {
+    id: "signal",
+    coreWord: "signal",
+    rhymes: ["digital", "critical", "minimal", "ritual"],
+    nearRhymes: ["visible", "pivotal", "lyrical", "spiritual"],
+    slantWords: ["original", "cynical", "miracle", "physical"],
+    relatedTopics: [
+      "sending out your frequency",
+      "becoming visible through consistency",
+      "creative identity as a signal",
+      "knowing who can actually hear you",
+    ],
+    mood: "focused",
+    energy: "steady",
+    difficulty: "advanced",
+    topics: ["confidence", "focus", "reflection"],
+  },
+];

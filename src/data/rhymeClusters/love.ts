@@ -1,0 +1,55 @@
+import type { RhymeCluster } from "@/lib/types";
+
+export const loveClusters: RhymeCluster[] = [
+  {
+    id: "promise",
+    coreWord: "promise",
+    rhymes: ["honest", "on this", "beyond this", "wanted"],
+    nearRhymes: ["haunted", "constant", "cautious", "flawless"],
+    slantWords: ["process", "conscious", "nonsense", "options"],
+    relatedTopics: [
+      "wanting to believe someone",
+      "love that asks for proof",
+      "keeping your word when feelings change",
+      "the fear behind commitment",
+    ],
+    mood: "romantic",
+    energy: "smooth",
+    difficulty: "medium",
+    topics: ["love", "heartbreak", "reflection"],
+  },
+  {
+    id: "touch",
+    coreWord: "touch",
+    rhymes: ["rush", "trust", "must", "crush"],
+    nearRhymes: ["enough", "love", "above", "rough"],
+    slantWords: ["blood", "stuck", "come up", "cut"],
+    relatedTopics: [
+      "physical closeness and emotional distance",
+      "wanting comfort without losing control",
+      "chemistry that changes the room",
+      "needing someone more than expected",
+    ],
+    mood: "romantic",
+    energy: "smooth",
+    difficulty: "easy",
+    topics: ["love", "heartbreak", "healing"],
+  },
+  {
+    id: "distance",
+    coreWord: "distance",
+    rhymes: ["instance", "resistance", "existence", "persistence"],
+    nearRhymes: ["listen", "missing", "vision", "system"],
+    slantWords: ["different", "drifting", "wish it", "distant"],
+    relatedTopics: [
+      "loving someone from far away",
+      "emotional space becoming silence",
+      "missing what used to feel close",
+      "trying to understand the gap",
+    ],
+    mood: "romantic",
+    energy: "low",
+    difficulty: "medium",
+    topics: ["love", "heartbreak", "reflection"],
+  },
+];
