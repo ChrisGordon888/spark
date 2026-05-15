@@ -43,6 +43,11 @@ export function SparkCard({
                         onSpark={onSpark}
                         actionLabel={actionLabel}
                     />
+                ) : mode === "freestyle" ? (
+                    <FlowCueController
+                        coreWord={cluster.coreWord}
+                        onNextCue={onSpark}
+                    />
                 ) : (
                     <CoreWordPanel
                         cluster={cluster}
@@ -75,22 +80,13 @@ export function SparkCard({
                         </>
                     ) : mode === "freestyle" ? (
                         <>
-                            <FlowCueController
-                                coreWord={cluster.coreWord}
-                                onNextCue={onSpark}
-                            />
                             <WordChipGroup
-                                title="Rhymes"
-                                words={cluster.rhymes}
-                                variant="primary"
-                            />
-                            <WordChipGroup
-                                title="Near / Slant"
+                                title="Rhyme Fuel"
                                 words={[
-                                    ...cluster.nearRhymes.slice(0, 3),
-                                    ...cluster.slantWords.slice(0, 3),
+                                    ...cluster.rhymes.slice(0, 3),
+                                    ...cluster.nearRhymes.slice(0, 2),
                                 ]}
-                                variant="secondary"
+                                variant="primary"
                             />
                             <LaneBlock cluster={cluster} />
                             <AnglesBlock cluster={cluster} />

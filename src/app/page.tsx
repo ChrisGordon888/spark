@@ -25,14 +25,7 @@ export default function Home() {
         setActiveMode(mode);
     }
 
-    const buttonLabel =
-        activeMode === "rhyme"
-            ? "Spark Again"
-            : activeMode === "freestyle"
-                ? "Preview Flow"
-                : activeMode === "challenge"
-                    ? "Preview Challenge"
-                    : "Preview Starter";
+    const buttonLabel = "Spark";
 
     return (
         <main className="relative min-h-screen overflow-x-hidden bg-black px-4 py-4 text-zinc-100">
