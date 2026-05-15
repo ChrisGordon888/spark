@@ -5,20 +5,26 @@ import { ModeSelector } from "@/components/spark/ModeSelector";
 import { SparkButton } from "@/components/spark/SparkButton";
 import { SparkCard } from "@/components/spark/SparkCard";
 import {
+    getFreshRandomCluster,
     getRandomCluster,
-    getRandomClusterExcluding,
     sparkModes,
 } from "@/lib/sparkEngine";
 import type { RhymeCluster, SparkMode } from "@/lib/types";
 
 export default function Home() {
     const [activeMode, setActiveMode] = useState<SparkMode>("rhyme");
+    const [recentClusterIds, setRecentClusterIds] = useState<string[]>([]);
     const [cluster, setCluster] = useState<RhymeCluster>(() => getRandomCluster());
 
     function handleSpark() {
-        setCluster((currentCluster) =>
-            getRandomClusterExcluding(currentCluster.id)
-        );
+        setCluster((currentCluster) => {
+            const updatedRecentIds = [currentCluster.id, ...recentClusterIds].slice(0, 12);
+            const nextCluster = getFreshRandomCluster(updatedRecentIds);
+
+            setRecentClusterIds([nextCluster.id, ...updatedRecentIds].slice(0, 12));
+
+            return nextCluster;
+        });
     }
 
     function handleModeChange(mode: SparkMode) {
