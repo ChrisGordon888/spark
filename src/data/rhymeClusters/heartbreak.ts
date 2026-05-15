@@ -1,0 +1,55 @@
+import type { RhymeCluster } from "@/lib/types";
+
+export const heartbreakClusters: RhymeCluster[] = [
+  {
+    id: "alone",
+    coreWord: "alone",
+    rhymes: ["phone", "zone", "known", "throne"],
+    nearRhymes: ["home", "soul", "ghost", "close"],
+    slantWords: ["control", "cold", "road", "low"],
+    relatedTopics: [
+      "isolation",
+      "missing someone",
+      "finding yourself",
+      "quiet nights",
+    ],
+    mood: "romantic",
+    energy: "low",
+    difficulty: "easy",
+    topics: ["love", "heartbreak", "night", "reflection"],
+  },
+  {
+    id: "heart",
+    coreWord: "heart",
+    rhymes: ["start", "part", "dark", "spark"],
+    nearRhymes: ["scar", "far", "guard", "stars"],
+    slantWords: ["apart", "restart", "hard", "charged"],
+    relatedTopics: [
+      "opening up",
+      "guarded love",
+      "starting again",
+      "emotional honesty",
+    ],
+    mood: "romantic",
+    energy: "smooth",
+    difficulty: "easy",
+    topics: ["love", "heartbreak", "healing"],
+  },
+  {
+    id: "rain",
+    coreWord: "rain",
+    rhymes: ["pain", "chain", "gain", "name"],
+    nearRhymes: ["change", "same", "flame", "escape"],
+    slantWords: ["awake", "mistake", "remain", "terrain"],
+    relatedTopics: [
+      "emotional release",
+      "hard seasons",
+      "cleansing",
+      "turning pain into growth",
+    ],
+    mood: "dark",
+    energy: "steady",
+    difficulty: "easy",
+    topics: ["healing", "heartbreak", "growth"],
+  },
+];
