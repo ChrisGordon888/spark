@@ -63,7 +63,7 @@ export default function Home() {
                 />
 
                 <a
-                    href="#spark-console"
+                    href={activeMode === "freestyle" ? "#flow-cue-pulse" : "#spark-console"}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-zinc-300 transition hover:border-violet-300/30 hover:bg-violet-300/10 hover:text-violet-100"
                 >
                     Enter Flow

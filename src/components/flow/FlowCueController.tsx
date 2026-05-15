@@ -85,7 +85,10 @@ export function FlowCueController({
     }
 
     return (
-        <div className="rounded-[1.5rem] border border-white/10 bg-black/30 p-4">
+        <div
+            id="flow-cue-pulse"
+            className="scroll-mt-4 rounded-[1.5rem] border border-white/10 bg-black/30 p-4"
+        >
             <div className="flex items-center justify-between gap-4">
                 <div>
                     <p className="text-[0.65rem] uppercase tracking-[0.35em] text-violet-200/70">

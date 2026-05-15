@@ -80,6 +80,8 @@ export function SparkCard({
                         </>
                     ) : mode === "freestyle" ? (
                         <>
+                            <FlowContextStrip cluster={cluster} />
+
                             <WordChipGroup
                                 title="Rhyme Fuel"
                                 words={[
@@ -88,8 +90,6 @@ export function SparkCard({
                                 ]}
                                 variant="primary"
                             />
-                            <LaneBlock cluster={cluster} />
-                            <AnglesBlock cluster={cluster} />
                         </>
                     ) : (
                         <>
@@ -272,6 +272,36 @@ function LaneBlock({ cluster }: { cluster: RhymeCluster }) {
                     </span>
                 ))}
             </div>
+        </div>
+    );
+}
+
+function FlowContextStrip({ cluster }: { cluster: RhymeCluster }) {
+    const firstThread = cluster.relatedTopics[0];
+
+    return (
+        <div className="rounded-2xl border border-violet-300/10 bg-violet-300/[0.04] p-3">
+            <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-zinc-500">
+                    Lane
+                </span>
+
+                {cluster.topics.slice(0, 3).map((topic) => (
+                    <span
+                        key={topic}
+                        className="rounded-full border border-violet-300/20 bg-black/20 px-2.5 py-1 text-xs capitalize text-violet-100"
+                    >
+                        {topic}
+                    </span>
+                ))}
+            </div>
+
+            {firstThread ? (
+                <p className="mt-3 text-sm leading-5 text-zinc-300">
+                    <span className="text-violet-300">Thread:</span>{" "}
+                    {firstThread}
+                </p>
+            ) : null}
         </div>
     );
 }
